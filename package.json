@@ -1,0 +1,11 @@
+{
+  "name": "friendsational",
+  "version": "1.0.0",
+  "description": "express and node based dating app",
+  "main": "server.js",
+  "scripts": {
+    "test": "start"
+  },
+  "author": "Casey Carroll",
+  "license": "ISC"
+}
