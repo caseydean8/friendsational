@@ -12,5 +12,11 @@ module.exports = app => {
     app.post('/api/friends', ((req, res) => {
         friendData.push(req.body);
         res.json(true);
+        // console.log(friendData)
+        //loop through friendData objects and compare
+        for (let i = 0; i < friendData.length; i++) {
+            let score = friendData[i].scores
+            console.log(score)
+        }
     }))
 } 
