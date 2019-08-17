@@ -1,6 +1,5 @@
 // npms
 const express = require('express')
-// const path = require('path')
 
 // creating express server
 const app = express()
