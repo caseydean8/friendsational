@@ -13,10 +13,14 @@ module.exports = app => {
         friendData.push(req.body);
         res.json(true);
         // console.log(friendData)
-        //loop through friendData objects and compare
+        //loop through friendData objects and compare most recent friend score vs previous scores, subtracting differences at correlating index positions, creating a new array with differences summed.
+        // create compare data array 
+        let compareData = []
         for (let i = 0; i < friendData.length; i++) {
             let score = friendData[i].scores
-            console.log(score)
+            // console.log(score)
+            compareData.push(score)
+            console.log(compareData)
         }
     }))
 } 
