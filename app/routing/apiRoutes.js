@@ -22,11 +22,13 @@ module.exports = app => {
             count++
             // console.log(score)
             compareData.push(score)
-            // console.log(`array of survey answer values from friend data ${compareData}`)
             console.log(`friend data list is ${count} long`)
         }
         console.log(compareData)
-        arrayCompare(compareData[0], compareData[1])
+        for (let i = 0; i < compareData.length - 1; i++) {
+            arrayCompare(compareData[i], compareData[count])
+        }
+        
         // let difference =[]
         // for (let i = 0; i != compareData.length; i++) {
         //     for (let j = 0; j != compareData[i].length; j++) {
@@ -46,7 +48,6 @@ function arrayCompare(a, b) {
     for (let i = 0; i < 10; i++) {
        c = Math.abs(a[i] - b[i])
        cArray.push(c)
-       console.log(cArray)
     }
     console.log(cArray)
 }
