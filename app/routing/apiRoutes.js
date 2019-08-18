@@ -27,6 +27,7 @@ module.exports = app => {
         console.log(compareData)
         for (let i = 0; i < compareData.length - 1; i++) {
             arrayCompare(compareData[i], compareData[count])
+            // console.log(sum)
         }
         
         // let difference =[]
@@ -45,9 +46,14 @@ module.exports = app => {
 
 function arrayCompare(a, b) {
     cArray = []
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    let sum
     for (let i = 0; i < 10; i++) {
        c = Math.abs(a[i] - b[i])
        cArray.push(c)
+       sum = cArray.reduce(reducer)
+    //    return sum
     }
     console.log(cArray)
+    console.log(sum)
 }
