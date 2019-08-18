@@ -27,25 +27,29 @@ module.exports = app => {
         // console.log(names)
         // console.log(compareData)
         
-        for (let i = 0; i < compareData.length; i++) {
+        for (let i = 0; i < compareData.length - 1; i++) {
             arrayCompare(compareData[i], compareData[count])
         }
         
         function arrayCompare(a, b) {
+
             cArray = []
             const reducer = (accumulator, currentValue) => accumulator + currentValue
             let sum
+
             for (let i = 0; i < 10; i++) {
                c = Math.abs(a[i] - b[i])
                cArray.push(c)
                sum = cArray.reduce(reducer)
-            //    return sum
             }
+
             console.log(cArray)
             console.log(sum)
             sumArray.push(sum)
         }
 
         console.log(sumArray)
+        let matchIndex = sumArray.indexOf(Math.min.apply(null, sumArray))
+        console.log(matchIndex)
     }))
 } 
