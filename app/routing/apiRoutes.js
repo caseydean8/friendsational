@@ -1,7 +1,4 @@
-// Your `apiRoutes.js` file should contain two routes:
 
-//    * A GET route with the url `/api/friends`. This will be used to display a JSON of all possible friends.
-//    * A POST routes `/api/friends`. This will be used to handle incoming survey results. This route will also be used to handle the compatibility logic.
 const friendData = require('../data/friends')
 
 module.exports = app => {
@@ -12,48 +9,43 @@ module.exports = app => {
     app.post('/api/friends', ((req, res) => {
         friendData.push(req.body);
         res.json(true);
-        // console.log(friendData)
         //loop through friendData objects and compare most recent friend score vs previous scores, subtracting differences at correlating index positions, creating a new array with differences summed.
         // create compare data array 
         let compareData = []
+        let names = []
         let count = -1
+        let sumArray = []
+
         for (let i = 0; i < friendData.length; i++) {
             let score = friendData[i].scores
-            count++
             // console.log(score)
             compareData.push(score)
+            names.push(friendData[i].name)
+            count++
             console.log(`friend data list is ${count} long`)
         }
-        console.log(compareData)
-        for (let i = 0; i < compareData.length - 1; i++) {
+        // console.log(names)
+        // console.log(compareData)
+        
+        for (let i = 0; i < compareData.length; i++) {
             arrayCompare(compareData[i], compareData[count])
-            // console.log(sum)
         }
         
-        // let difference =[]
-        // for (let i = 0; i != compareData.length; i++) {
-        //     for (let j = 0; j != compareData[i].length; j++) {
-        //     difference.push(compareData[i][j] - compareData[count][j])
-        //     console.log(difference)
-        //     if (difference.length === 10) {
-        //         break
-        //     }
-        //     }
-        // }
-        // console.log(difference)
+        function arrayCompare(a, b) {
+            cArray = []
+            const reducer = (accumulator, currentValue) => accumulator + currentValue
+            let sum
+            for (let i = 0; i < 10; i++) {
+               c = Math.abs(a[i] - b[i])
+               cArray.push(c)
+               sum = cArray.reduce(reducer)
+            //    return sum
+            }
+            console.log(cArray)
+            console.log(sum)
+            sumArray.push(sum)
+        }
+
+        console.log(sumArray)
     }))
 } 
-
-function arrayCompare(a, b) {
-    cArray = []
-    const reducer = (accumulator, currentValue) => accumulator + currentValue;
-    let sum
-    for (let i = 0; i < 10; i++) {
-       c = Math.abs(a[i] - b[i])
-       cArray.push(c)
-       sum = cArray.reduce(reducer)
-    //    return sum
-    }
-    console.log(cArray)
-    console.log(sum)
-}
