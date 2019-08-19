@@ -6,9 +6,9 @@ module.exports = app => {
     ((req, res) => {
         res.json(friendData)
     }))
+
     app.post('/api/friends', ((req, res) => {
-        friendData.push(req.body);
-        res.json(true);
+        
         //loop through friendData objects and compare most recent friend score vs previous scores, subtracting differences at correlating index positions, creating a new array with differences summed.
         // create compare data array 
         let compareData = []
@@ -51,5 +51,7 @@ module.exports = app => {
         console.log(sumArray)
         let matchIndex = sumArray.indexOf(Math.min.apply(null, sumArray))
         console.log(matchIndex)
+        friendData.push(req.body);
+        res.json(friendData[matchIndex]);
     }))
 } 
