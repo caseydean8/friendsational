@@ -13,7 +13,6 @@ module.exports = app => {
         //loop through friendData objects and compare most recent friend score vs previous scores, subtracting differences at correlating index positions, creating a new array with differences summed.
         // create compare data array 
         let compareData = []
-        let names = []
         let count = -1
         let sumArray = []
 
@@ -21,12 +20,9 @@ module.exports = app => {
             let score = friendData[i].scores
             console.log(score)
             compareData.push(score)
-            names.push(friendData[i].name)
             count++
-            console.log(`friend data list is ${count} long`)
+            console.log(`last index is ${count}`)
         }
-        // console.log(names)
-        // console.log(compareData)
         
         for (let i = 0; i < compareData.length - 1; i++) {
             arrayCompare(compareData[i], compareData[count])
